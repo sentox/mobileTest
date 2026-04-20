@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.MobileTest" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- 全屏主题 -->
+    <style name="Theme.AppCompat.Fullscreen" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!--<item name="android:windowFullscreen">true</item>-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowAnimationStyle">@style/SlideRightAnimation</item>
+    </style>
+
+    <!-- 全屏透明主题 -->
+    <style name="Theme.AppCompat.Translucent.Fullscreen" parent="Theme.AppCompat.Fullscreen">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
 </resources>

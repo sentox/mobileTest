@@ -10,13 +10,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MobileTest"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
+            android:name=".home.HomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MobileTest">
+            android:configChanges="orientation"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
