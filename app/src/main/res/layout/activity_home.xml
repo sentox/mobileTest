@@ -5,4 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_marginTop="70dp"
+        android:id="@+id/mTvTest"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

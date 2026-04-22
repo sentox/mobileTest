@@ -8,7 +8,7 @@ import com.sentox.mobiletest.data.json.OriginAndDestinationData
 import com.sentox.mobiletest.data.json.SegmentData
 
 /**
- * 描述：用于查询booking主表和segment从表的
+ * 描述：用于查询booking主表和segment从表的数据类
  * 说明：
  * Created by Sentox
  * Created on 2026/4/21
