@@ -30,10 +30,15 @@ class HomeViewModel : ViewModel() {
 
     companion object {
         private const val TAG = "HomeViewModel"
+        const val REQ_STATUS_NO_REQ = -1
+        const val REQ_STATUS_ING = 0
+        const val REQ_STATUS_SUCCESS = 200
     }
 
     private val mDataListStateFlow = MutableStateFlow<ArrayList<BookingListData>>(arrayListOf())
     var mListFlow: StateFlow<ArrayList<BookingListData>> = mDataListStateFlow.asStateFlow()
+    private val mRequestStateFlow = MutableStateFlow<Int>(REQ_STATUS_NO_REQ)
+    var mReqFlow: StateFlow<Int> = mRequestStateFlow.asStateFlow()
 
     init {
         getLocalData()
@@ -55,14 +60,17 @@ class HomeViewModel : ViewModel() {
      *  模拟请求接口
      * **/
     fun getNewBookingData(testCode: Int) {
+        mRequestStateFlow.value = REQ_STATUS_ING
         BookingService.getBookingData(testCode)
             .flowOn(Dispatchers.IO)
             .onEach {
                 if (it.isSuccess) {
                     //请求成功
                     compareAndSaveData(it.data)
+                    mRequestStateFlow.value = REQ_STATUS_SUCCESS
                 } else {
                     //请求失败
+                    mRequestStateFlow.value = it.rspCode
                     when (it.rspCode) {
                         443 -> {
                             //建立连接时发生错误
@@ -74,7 +82,7 @@ class HomeViewModel : ViewModel() {
                         }
                     }
                     L.info(TAG, it.msg)
-                    Toast.makeText(BaseApplication.getAppContext(), it.msg, 1000)
+                    mRequestStateFlow.value = REQ_STATUS_NO_REQ
                 }
             }
             .launchIn(viewModelScope)

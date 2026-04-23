@@ -74,16 +74,6 @@ object BookingService {
                         }
                     }
                 }
-                if (mBookingDataList.isEmpty()) {
-                    //没有未过期数据，自动创建两条
-                    val data1 = createBookingData()
-                    mBookingDataList.add(data1)
-                    DataProvider.insertOrUpdateBookListData(data1.toEntityData())
-                    delay(100)
-                    val data2 = createBookingData()
-                    mBookingDataList.add(data2)
-                    DataProvider.insertOrUpdateBookListData(data2.toEntityData())
-                }
                 L.info(TAG, "展示虚拟服务端数据")
                 for (data in mBookingDataList) {
                     L.info(TAG, gson.toJson(data))
@@ -106,7 +96,7 @@ object BookingService {
             val toLocation = mRandomLocationList[(startPos + i + 1) % locationSize]
             segments.add(
                 SegmentData(
-                    i,
+                    i+1,
                     OriginAndDestinationData(
                         toLocation, toLocation.displayName,
                         fromLocation, fromLocation.displayName
@@ -120,7 +110,7 @@ object BookingService {
         return BookingData(
             shipReference,
             shipReference,
-            true,
+            false,
             //过期时间是当前创建时间的2分钟后
             System.currentTimeMillis() / 1000L + 2 * 60L,
             Random.nextInt(20, 50) * 60L,
@@ -137,6 +127,10 @@ object BookingService {
             val response = BookingListResponse()
             when(testCode){
                 SIMULATION_SUCCESS_NO_NEW_DATA->{
+                    //没有新增数据，将原有数据的canIssueTicketChecking改变模拟数据更新
+                    mBookingDataList.forEach {
+                        it.canIssueTicketChecking = !it.canIssueTicketChecking
+                    }
                     response.data.addAll(mBookingDataList)
                     response.msg = "请求成功"
                     response.rspCode = 200
@@ -154,7 +148,6 @@ object BookingService {
                 }
 
                 SIMULATION_FAILED->{
-                    response.data.addAll(mBookingDataList)
                     response.msg = "请求失败"
                     response.rspCode = 443
                     response.isSuccess = false

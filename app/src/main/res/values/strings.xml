@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">mobileTest</string>
+    <string name="booking_title">Ticket</string>
+    <string name="booking_reference">ShipReference:%s</string>
+    <string name="booking_status_issued">Issued</string>
+    <string name="booking_status_not_issued">Not Issued</string>
+    <string name="booking_status_expiry">Expired</string>
+    <string name="booking_duration">Duration:%sm</string>
+    <string name="booking_desc">%s to %s | %s</string>
+    <string name="booking_empty">没有数据，请点击刷新</string>
+    <string name="booking_top_desc">这个界面ui模仿南航机票订单页，启动显示的是数据库数据(因为没有请求接口同步，会展示已过期的数据），第一个按钮是模拟获取接口，并带有两个新数据;第二个接口只更新数据;第三个接口模拟网络错误，下拉刷新效果与第二个按钮相同；空白页点击与第一个按钮相同</string>
+
 </resources>

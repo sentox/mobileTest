@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import com.sentox.mobiletest.base.log.L
 import com.sentox.mobiletest.data.database.entity.BookingEntity
 import com.sentox.mobiletest.data.database.entity.BookingListData
 import com.sentox.mobiletest.data.database.entity.SegmentEntity
@@ -21,7 +22,7 @@ interface BookingDao {
     //================= BookingEntity操作 ===================
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrUpdateBookingEntity(booking: BookingEntity)
+    suspend fun insertOrUpdateBookingEntity(booking: BookingEntity): Long
 
     @Query("DELETE FROM bookingentity WHERE shipReference = :shipReference")
     suspend fun deleteBookingByReference(shipReference: String)
@@ -48,7 +49,8 @@ interface BookingDao {
      * **/
     @Transaction
     suspend fun insertOrUpdateBookListData(bookingListData: BookingListData) {
-        insertOrUpdateBookingEntity(bookingListData.booking)
+        val result = insertOrUpdateBookingEntity(bookingListData.booking)
+        L.info("zhr", "result=$result")
         deleteSegmentsByShipReference(bookingListData.booking.shipReference)
         if (bookingListData.segments.isNotEmpty()) {
             insertSegments(bookingListData.segments)

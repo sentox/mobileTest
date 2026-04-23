@@ -83,4 +83,8 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
 
     implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'io.github.scwang90:refresh-layout-kernel:2.1.0'
+    implementation 'io.github.scwang90:refresh-footer-classics:2.1.0'
+    implementation 'io.github.scwang90:refresh-header-classics:2.1.0'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.11'
 }

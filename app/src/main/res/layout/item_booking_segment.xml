@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/mViewLine"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#809E9E9E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mTvId"
+        android:layout_width="20dp"
+        android:layout_height="25dp"
+        android:background="@drawable/bg_booking_segment"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/mViewLine"
+        app:layout_constraintTop_toBottomOf="@id/mViewLine"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/mTvOrigin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/mViewLine"
+        app:layout_constraintTop_toBottomOf="@id/mViewLine"
+        tools:text="广州" />
+
+    <ImageView
+        android:id="@+id/mIvArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:src="@mipmap/ic_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/mTvOrigin"
+        app:layout_constraintStart_toEndOf="@id/mTvOrigin"
+        app:layout_constraintTop_toTopOf="@id/mTvOrigin" />
+
+    <TextView
+        android:id="@+id/mTvDestination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/mTvOrigin"
+        app:layout_constraintStart_toEndOf="@id/mIvArrow"
+        app:layout_constraintTop_toTopOf="@id/mTvOrigin"
+        tools:text="上海" />
+
+    <TextView
+        android:id="@+id/mTvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/mTvOrigin"
+        app:layout_constraintTop_toBottomOf="@id/mTvOrigin"
+        tools:text="CAN to SHA | www.ship.com" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

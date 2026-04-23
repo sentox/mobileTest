@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="@color/black">
+    <!--该界面参考南航机票订单页-->
+
+    <View
+        android:id="@+id/mViewBg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_booking"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/mTvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/booking_title"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/mViewBg"
+        app:layout_constraintTop_toTopOf="@id/mViewBg" />
+
+    <TextView
+        android:id="@+id/mTvShipReference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/mTvTitle"
+        app:layout_constraintTop_toBottomOf="@id/mTvTitle"
+        tools:text="ShipReference:1776766355" />
+
+    <TextView
+        android:id="@+id/mTvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:textColor="#0093d0"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@id/mTvShipReference"
+        app:layout_constraintEnd_toEndOf="@id/mViewBg"
+        app:layout_constraintTop_toTopOf="@id/mTvTitle"
+        tools:text="Ticket issued" />
+
+    <TextView
+        android:id="@+id/mTvDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/booking_duration"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="@id/mTvShipReference"
+        app:layout_constraintTop_toBottomOf="@id/mTvShipReference" />
+
+
+    <LinearLayout
+        android:id="@+id/mLySegments"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@id/mViewBg"
+        app:layout_constraintBottom_toBottomOf="@id/mViewBg"
+        app:layout_constraintStart_toStartOf="@id/mViewBg"
+        app:layout_constraintTop_toBottomOf="@id/mTvDuration">
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

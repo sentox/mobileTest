@@ -14,23 +14,23 @@ data class BookingData(
     /**
      *  订单编号
      * **/
-    val shipReference: String,
+    var shipReference: String,
     /**
      *  订单token
      * **/
-    val shipToken: String,
+    var shipToken: String,
     /**
      *  是否可以出票
      * **/
-    val canIssueTicketChecking: Boolean,
+    var canIssueTicketChecking: Boolean,
     /**
      *  过期时间，单位：秒
      * **/
-    val expiryTime: Long,
+    var expiryTime: Long,
     /**
      *  飞行总时间
      * **/
-    val duration: Long,
+    var duration: Long,
     /**
      *  航段信息
      * **/
